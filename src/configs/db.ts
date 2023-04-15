@@ -1,12 +1,17 @@
+import "reflect-metadata";
 import { DataSource } from "typeorm";
+import Invoice from "../entities/Invoice";
+import InvoiceItem from "../entities/Item";
 
 export const AppDataSource: DataSource = new DataSource({
-    type: "postgres",
-    host: "localhost",
-    username: "postgres",
-    password: "postgres",
-    database: "invoices",
-    logging: true,
-    port: 5432,
-    entities: [],
-})
+  type: "postgres",
+  port: Number(process.env.DB_PORT),
+  host: process.env.DB_HOST,
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  // database: process.env.DB_NAME,
+  database: "invoices",
+  logging: true,
+  synchronize: true,
+  entities: [Invoice, InvoiceItem],
+});
