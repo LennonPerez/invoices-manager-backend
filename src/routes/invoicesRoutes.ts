@@ -1,27 +1,24 @@
 import express, { Router } from "express";
+import {
+  getAllInvoicesController,
+  createNewInvoiceController,
+  getInvoiceByIdController,
+  updateInvoiceController,
+  deleteInvoiceController,
+} from "../controllers/invoicesControllers";
 
 const router: Router = express.Router();
 
-router.get("/", (_, res) => {
-  res.send("Fetching all invoices");
-});
+router.get("/", getAllInvoicesController);
 
-router.post("/", (_, res) => {
-  res.send("Creating a new invoice");
-});
+router.post("/", createNewInvoiceController);
 
 const specificInvoice = router.route("/:id");
 
-specificInvoice.get((req, res) => {
-  res.send(`Fetching invoice ${req.params.id}`);
-});
+specificInvoice.get(getInvoiceByIdController);
 
-specificInvoice.put((req, res) => {
-  res.send(`Updating invoice ${req.params.id}`);
-});
+specificInvoice.put(updateInvoiceController);
 
-specificInvoice.delete((req, res) => {
-  res.send(`Deleting invoice ${req.params.id}`);
-});
+specificInvoice.delete(deleteInvoiceController);
 
 export default router;

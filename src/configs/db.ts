@@ -3,7 +3,7 @@ import { DataSource } from "typeorm";
 import Invoice from "../entities/Invoice";
 import InvoiceItem from "../entities/Item";
 
-export const AppDataSource: DataSource = new DataSource({
+const appDataSource: DataSource = new DataSource({
   type: "postgres",
   port: Number(process.env.DB_PORT),
   host: process.env.DB_HOST,
@@ -15,3 +15,5 @@ export const AppDataSource: DataSource = new DataSource({
   synchronize: true,
   entities: [Invoice, InvoiceItem],
 });
+
+export default appDataSource;

@@ -19,7 +19,7 @@ export enum InvoiceStatus {
 export interface InvoiceAddress {
   country: string;
   city: string;
-  postCode: string;
+  postalCode: string;
   street: string;
 }
 
@@ -36,17 +36,17 @@ export default class Invoice extends BaseEntity {
   @Column()
   invoiceDescription: string;
 
-  @Column()
+  @Column({ type: "int" })
   @IsInt()
   paymentTerm: 1 | 7 | 14 | 30;
 
-  @Column()
+  @Column({ type: "date" })
   @IsDate()
   invoiceDate: Date;
 
-  @Column()
+  @Column({ type: "date" })
   @IsDate()
-  paymentDue: Date; // autocalculated invoiceDate + payment term
+  paymentDue: Date; // auto-calculated invoiceDate + paymentTerm
 
   @Column()
   clientName: string;
@@ -61,12 +61,12 @@ export default class Invoice extends BaseEntity {
   @Column("simple-json")
   billedToAddress: InvoiceAddress;
 
-  @OneToMany(() => InvoiceItem, (item) => item.invoice)
-  items: InvoiceItem[];
-
   @CreateDateColumn()
   createdAt: Date;
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToMany(() => InvoiceItem, (item) => item.invoice)
+  items: InvoiceItem[];
 }
