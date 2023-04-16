@@ -7,6 +7,7 @@ const Invoice_1 = tslib_1.__importDefault(require("../entities/Invoice"));
 const getCatchError_1 = tslib_1.__importDefault(require("../utils/getCatchError"));
 const getAllInvoicesController = (_, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     try {
+        console.log(__dirname);
         const invoices = yield db_1.default.getRepository(Invoice_1.default).find();
         res.json({ data: invoices });
     }

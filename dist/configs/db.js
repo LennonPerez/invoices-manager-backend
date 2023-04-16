@@ -1,10 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const tslib_1 = require("tslib");
-const path_1 = tslib_1.__importDefault(require("path"));
+// import path from "path";
 require("reflect-metadata");
 const typeorm_1 = require("typeorm");
-const isCompiled = path_1.default.extname(__filename).includes("js");
+const Invoice_1 = tslib_1.__importDefault(require("../entities/Invoice"));
+const Item_1 = tslib_1.__importDefault(require("../entities/Item"));
+// const isCompiled = path.extname(__filename).includes("js");
 const appDataSource = new typeorm_1.DataSource({
     type: "postgres",
     port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 5432,
@@ -14,7 +16,8 @@ const appDataSource = new typeorm_1.DataSource({
     database: process.env.DB_NAME || "invoices",
     logging: true,
     synchronize: true,
-    entities: [isCompiled ? "dist/entities/*.js" : "src/entities/*.ts"],
+    // entities: [isCompiled ? "dist/entities/*.js" : "src/entities/*.ts"],
+    entities: [Invoice_1.default, Item_1.default],
 });
 exports.default = appDataSource;
 //# sourceMappingURL=db.js.map
