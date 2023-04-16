@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "typeorm": "ts-node --files -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/configs/db.ts",
+    "db:migrate": "npm run typeorm migration:run",
+    "db:create-migration": "npm run typeorm migration:create -- -n"
   },
   "keywords": [],
   "author": "Lennon Perez",
