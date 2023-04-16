@@ -1,6 +1,6 @@
 import express, { Express } from "express";
 import cors from "cors";
-import InvoicesRouter from "../routes/invoicesRoutes";
+import InvoicesRouter from "./routes/invoicesRoutes";
 
 const app: Express = express();
 

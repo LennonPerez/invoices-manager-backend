@@ -1,10 +1,7 @@
-import "reflect-metadata";
+// import path from "path";
 import { DataSource } from "typeorm";
-// import Invoice from "../entities/Invoice";
-// import InvoiceItem from "../entities/Item";
-import path from "path";
 
-const isCompiled = path.extname(__filename).includes("js");
+// const isCompiled = path.extname(__filename).includes("js");
 
 const appDataSource: DataSource = new DataSource({
   type: "postgres",
@@ -15,9 +12,8 @@ const appDataSource: DataSource = new DataSource({
   database: process.env.DB_NAME || "invoices",
   logging: true,
   synchronize: true,
-  // entities: [Invoice, InvoiceItem],
-  // entities: ["src/entities/*.ts"],
-  entities: [isCompiled ? "dist/entities/*.js" : "src/entities/*.ts"],
+  // entities: [isCompiled ? "dist/entities/*.js" : "src/entities/*.ts"],
+  entities: [__dirname + "/../**/entities/*.{js,ts}"],
 });
 
 export default appDataSource;
