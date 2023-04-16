@@ -8,6 +8,8 @@ export const getAllInvoicesController = async (
   res: Response
 ): Promise<void> => {
   try {
+    console.log(__dirname);
+
     const invoices = await appDataSource.getRepository(Invoice).find();
     res.json({ data: invoices });
   } catch (e) {
