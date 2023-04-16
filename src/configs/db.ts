@@ -1,8 +1,6 @@
 import path from "path";
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-// import Invoice from "../entities/Invoice";
-// import InvoiceItem from "../entities/Item";
 
 const isCompiled = path.extname(__filename).includes("js");
 
@@ -15,8 +13,7 @@ const appDataSource: DataSource = new DataSource({
   database: process.env.DB_NAME || "invoices",
   logging: true,
   synchronize: true,
-  entities: [`src/entities/**/*.${isCompiled ? "js" : "ts"}`],
-  // entities: [Invoice, InvoiceItem],
+  entities: [isCompiled ? "dist/entities/*.js" : "src/entities/*.ts"],
 });
 
 export default appDataSource;

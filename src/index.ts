@@ -7,7 +7,7 @@ dotenv.config();
 const initApp = async () => {
   try {
     await appDataSource.initialize();
-    const port = process.env.PORT;
+    const port = process.env.PORT || 3434;
     app.listen(port, () => console.log(`Server running on port ${port}`));
   } catch (error) {
     console.log(`Error running server: ${error}`);
