@@ -8,7 +8,7 @@ dotenv_1.default.config();
 const initApp = () => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
     try {
         yield db_1.default.initialize();
-        const port = process.env.PORT;
+        const port = process.env.PORT || 3434;
         app_1.default.listen(port, () => console.log(`Server running on port ${port}`));
     }
     catch (error) {
