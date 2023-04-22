@@ -1,11 +1,22 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteInvoiceController = exports.updateInvoiceController = exports.createNewInvoiceController = exports.getInvoiceByIdController = exports.getAllInvoicesController = void 0;
-const tslib_1 = require("tslib");
-const db_1 = tslib_1.__importDefault(require("../configs/db"));
-const Invoice_entity_1 = tslib_1.__importDefault(require("../entities/Invoice.entity"));
-const getCatchError_1 = tslib_1.__importDefault(require("../utils/getCatchError"));
-const getAllInvoicesController = (_, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
+const db_1 = __importDefault(require("../configs/db"));
+const Invoice_entity_1 = __importDefault(require("../entities/Invoice.entity"));
+const getCatchError_1 = __importDefault(require("../utils/getCatchError"));
+const getAllInvoicesController = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const invoices = yield db_1.default.getRepository(Invoice_entity_1.default).find();
         res.json({ data: invoices });
@@ -16,7 +27,7 @@ const getAllInvoicesController = (_, res) => tslib_1.__awaiter(void 0, void 0, v
     }
 });
 exports.getAllInvoicesController = getAllInvoicesController;
-const getInvoiceByIdController = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
+const getInvoiceByIdController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const invoice = yield db_1.default.getRepository(Invoice_entity_1.default).findOneBy({
             id: req.params.id,
@@ -29,7 +40,7 @@ const getInvoiceByIdController = (req, res) => tslib_1.__awaiter(void 0, void 0,
     }
 });
 exports.getInvoiceByIdController = getInvoiceByIdController;
-const createNewInvoiceController = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
+const createNewInvoiceController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (!req.body.items || req.body.items.length == 0)
             throw new Error("You must supply at least one item for this invoice");
@@ -43,7 +54,7 @@ const createNewInvoiceController = (req, res) => tslib_1.__awaiter(void 0, void 
     }
 });
 exports.createNewInvoiceController = createNewInvoiceController;
-const updateInvoiceController = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
+const updateInvoiceController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (!req.body.items || req.body.items.length == 0)
             throw new Error("You must supply at least one item for this invoice");
@@ -62,7 +73,7 @@ const updateInvoiceController = (req, res) => tslib_1.__awaiter(void 0, void 0, 
     }
 });
 exports.updateInvoiceController = updateInvoiceController;
-const deleteInvoiceController = (req, res) => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
+const deleteInvoiceController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const invoice = yield db_1.default.getRepository(Invoice_entity_1.default).findOneBy({
             id: req.params.id,
