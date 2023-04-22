@@ -5,6 +5,7 @@ declare global {
       DB_PORT: string;
       DB_HOST: string;
       DB_NAME: string;
+      DB_URL: string | undefined;
       DB_USERNAME: string;
       DB_PASSWORD: string;
       PORT: string;

@@ -8,6 +8,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const appDataSource = new typeorm_1.DataSource({
     type: "postgres",
+    url: process.env.DB_URL,
     port: process.env.DB_PORT ? Number(process.env.DB_PORT) : 5432,
     host: process.env.DB_HOST,
     username: process.env.DB_USERNAME,
