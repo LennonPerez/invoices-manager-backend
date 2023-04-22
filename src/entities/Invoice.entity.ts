@@ -8,7 +8,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { IsEmail, IsDate, IsInt } from "class-validator";
-import InvoiceItem from "./Item";
+import InvoiceItem from "./InvoiceItem.entity";
 
 export enum InvoiceStatus {
   PENDING = "Pending",

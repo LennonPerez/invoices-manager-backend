@@ -7,7 +7,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { IsInt, Min } from "class-validator";
-import Invoice from "./Invoice";
+import Invoice from "./Invoice.entity";
 
 @Entity("items")
 export default class InvoiceItem {

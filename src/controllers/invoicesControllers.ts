@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import appDataSource from "../configs/db";
-import Invoice from "../entities/Invoice";
+import Invoice from "../entities/Invoice.entity";
 import getCatchError from "../utils/getCatchError";
 
 export const getAllInvoicesController = async (
@@ -8,8 +8,6 @@ export const getAllInvoicesController = async (
   res: Response
 ): Promise<void> => {
   try {
-    console.log(__dirname);
-
     const invoices = await appDataSource.getRepository(Invoice).find();
     res.json({ data: invoices });
   } catch (e) {
