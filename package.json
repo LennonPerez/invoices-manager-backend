@@ -6,12 +6,15 @@
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
+    "build": "rimraf dist && tsc",
     "typeorm": "ts-node --files -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/configs/db.ts",
     "db:migrate": "npm run typeorm migration:run",
     "db:create-migration": "npm run typeorm migration:create -- -n"
   },
   "pre-commit": [
+    "ts.check",
     "build",
     "add-build"
   ],

@@ -1,9 +1,6 @@
 import app from "./app";
-import dotenv from "dotenv";
 import appDataSource from "./configs/db";
 import "reflect-metadata";
-
-dotenv.config();
 
 const initApp = async () => {
   try {

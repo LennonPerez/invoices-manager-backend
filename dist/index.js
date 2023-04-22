@@ -13,10 +13,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
-const dotenv_1 = __importDefault(require("dotenv"));
 const db_1 = __importDefault(require("./configs/db"));
 require("reflect-metadata");
-dotenv_1.default.config();
 const initApp = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield db_1.default.initialize();
