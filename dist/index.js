@@ -13,11 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const app_1 = __importDefault(require("./app"));
-const db_1 = __importDefault(require("./configs/db"));
 require("reflect-metadata");
 const initApp = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield db_1.default.initialize();
         const port = process.env.PORT || 3434;
         app_1.default.listen(port, () => console.log(`Server running on port ${port}`));
     }

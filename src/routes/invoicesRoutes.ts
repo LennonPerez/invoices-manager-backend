@@ -1,24 +1,18 @@
 import express, { Router } from "express";
-import {
-  getAllInvoicesController,
-  createNewInvoiceController,
-  getInvoiceByIdController,
-  updateInvoiceController,
-  deleteInvoiceController,
-} from "../controllers/invoicesControllers";
+import * as controllers from "../controllers/invoicesControllers";
 
 const router: Router = express.Router();
 
-router.get("/", getAllInvoicesController);
+router.get("/", controllers.getAllInvoicesController);
 
-router.post("/", createNewInvoiceController);
+router.post("/", controllers.createNewInvoiceController);
 
 const specificInvoice = router.route("/:id");
 
-specificInvoice.get(getInvoiceByIdController);
+specificInvoice.get(controllers.getInvoiceByIdController);
 
-specificInvoice.put(updateInvoiceController);
+specificInvoice.put(controllers.updateInvoiceController);
 
-specificInvoice.delete(deleteInvoiceController);
+specificInvoice.delete(controllers.deleteInvoiceController);
 
 export default router;
